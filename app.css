@@ -297,29 +297,29 @@ h1 {
 }
 
 @media (max-width: 700px) {
+  body {
+    padding-bottom: 82px;
+  }
+
   .app-shell {
     width: min(100% - 20px, 980px);
-    padding: 16px 0;
+    padding: 10px 0;
   }
 
   .quiz-panel {
-    padding: 18px;
+    padding: 14px;
   }
 
-  .topbar {
-    display: grid;
+  h1 {
+    font-size: 1.55rem;
   }
 
-  .ghost-button,
-  .primary-button {
-    width: 100%;
+  .eyebrow {
+    margin-bottom: 3px;
   }
 
   .status-grid {
-    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 16px 0 10px;
   }
 
-  .question-meta {
-    display: grid;
-  }
-}
