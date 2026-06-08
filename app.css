@@ -251,6 +251,51 @@ h1 {
   font-size: 1.08rem;
 }
 
+.wrong-review {
+  margin: 24px 0;
+  text-align: left;
+}
+
+.wrong-review h3 {
+  margin: 0 0 14px;
+  font-size: 1.2rem;
+}
+
+.wrong-list {
+  display: grid;
+  gap: 12px;
+  max-height: 52vh;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.wrong-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #111b29;
+  padding: 14px 16px;
+}
+
+.wrong-item h4 {
+  margin: 0 0 8px;
+  color: var(--bad);
+  font-size: 1rem;
+}
+
+.wrong-item p {
+  margin: 6px 0 0;
+  line-height: 1.55;
+}
+
+.wrong-item strong {
+  color: var(--text);
+}
+
+.wrong-question,
+.perfect-message {
+  color: var(--muted);
+}
+
 @media (max-width: 700px) {
   .app-shell {
     width: min(100% - 20px, 980px);
