@@ -9,6 +9,7 @@ const els = {
   questionText: document.querySelector("#questionText"),
   options: document.querySelector("#options"),
   feedback: document.querySelector("#feedback"),
+  actions: document.querySelector(".actions"),
   nextButton: document.querySelector("#nextButton"),
   restartButton: document.querySelector("#restartButton"),
   retryButton: document.querySelector("#retryButton"),
@@ -135,6 +136,7 @@ function renderQuestion() {
   els.feedback.textContent = "";
   els.feedback.className = "feedback";
   els.nextButton.hidden = true;
+  els.actions.classList.remove("is-visible");
   els.options.innerHTML = "";
 
   els.questionNumber.textContent = `第 ${currentIndex + 1} / ${quiz.length} 題`;
@@ -188,6 +190,7 @@ function chooseAnswer(button, option) {
   els.feedback.hidden = false;
   els.nextButton.textContent = currentIndex === quiz.length - 1 ? "公布分數" : "下一題";
   els.nextButton.hidden = false;
+  els.actions.classList.add("is-visible");
   updateStatus();
 }
 
@@ -212,6 +215,8 @@ function goNext() {
 function showResult() {
   const percentage = Math.round((correctCount / quiz.length) * 100);
   els.questionCard.hidden = true;
+  els.nextButton.hidden = true;
+  els.actions.classList.remove("is-visible");
   els.resultCard.hidden = false;
   els.resultTitle.textContent = `${correctCount} / ${quiz.length} 分`;
   els.resultDetail.textContent = `本輪正確率 ${percentage}%`;
