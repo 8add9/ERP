@@ -1,17 +1,18 @@
 :root {
-  color-scheme: light;
-  --bg: #f5f7fb;
-  --panel: #ffffff;
-  --text: #172033;
-  --muted: #647084;
-  --line: #dfe5ef;
-  --brand: #2264d1;
-  --brand-dark: #174ea6;
-  --ok: #12805c;
-  --ok-bg: #e8f7f1;
-  --bad: #c43b3b;
-  --bad-bg: #fff0f0;
-  --shadow: 0 18px 50px rgba(25, 38, 64, 0.12);
+  color-scheme: dark;
+  --bg: #0f1720;
+  --panel: #182231;
+  --panel-soft: #202c3d;
+  --text: #e8edf5;
+  --muted: #aab6c7;
+  --line: #334155;
+  --brand: #7fb0ff;
+  --brand-dark: #a8c8ff;
+  --ok: #70e3b2;
+  --ok-bg: #12392e;
+  --bad: #ff9b9b;
+  --bad-bg: #432020;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -23,7 +24,7 @@ body {
   min-height: 100vh;
   font-family: "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
   background:
-    linear-gradient(135deg, rgba(34, 100, 209, 0.08), rgba(18, 128, 92, 0.08)),
+    linear-gradient(135deg, rgba(127, 176, 255, 0.08), rgba(112, 227, 178, 0.06)),
     var(--bg);
   color: var(--text);
 }
@@ -83,14 +84,14 @@ h1 {
 }
 
 .ghost-button {
-  background: #f8fafc;
+  background: var(--panel-soft);
   border-color: var(--line);
   color: var(--text);
 }
 
 .primary-button {
   background: var(--brand);
-  color: #fff;
+  color: #0b1220;
   font-weight: 700;
 }
 
@@ -114,7 +115,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 14px;
-  background: #fbfcff;
+  background: var(--panel-soft);
 }
 
 .status-label {
@@ -132,7 +133,7 @@ h1 {
   height: 10px;
   overflow: hidden;
   border-radius: 999px;
-  background: #e8edf6;
+  background: #101826;
 }
 
 .progress-bar {
@@ -184,7 +185,7 @@ h1 {
   min-height: 58px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: #111b29;
   color: var(--text);
   padding: 14px 16px;
   text-align: left;
@@ -194,7 +195,7 @@ h1 {
 
 .option-button:hover:not(:disabled) {
   border-color: var(--brand);
-  background: #f5f8ff;
+  background: #1c2c43;
 }
 
 .option-button.correct {
