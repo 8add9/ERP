@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ERP 證照題庫練習</title>
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="quiz-panel" aria-live="polite">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">ERP 基礎檢定</p>
+            <h1>題庫刷題練習</h1>
+          </div>
+          <button class="ghost-button" id="restartButton" type="button">重新開始</button>
+        </div>
+
+        <div class="status-grid">
+          <div>
+            <span class="status-label">進度</span>
+            <strong id="progressText">讀取中</strong>
+          </div>
+          <div>
+            <span class="status-label">目前答對</span>
+            <strong id="scoreText">0</strong>
+          </div>
+          <div>
+            <span class="status-label">題庫總數</span>
+            <strong id="totalText">0</strong>
+          </div>
+        </div>
+
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div id="loadingState" class="notice">正在載入題庫...</div>
+
+        <article id="questionCard" class="question-card" hidden>
+          <div class="question-meta">
+            <span id="questionNumber"></span>
+            <span id="sourceNumber"></span>
+          </div>
+          <h2 id="questionText"></h2>
+          <div class="options" id="options"></div>
+          <div class="feedback" id="feedback" hidden></div>
+          <div class="actions">
+            <button class="primary-button" id="nextButton" type="button" hidden>下一題</button>
+          </div>
+        </article>
+
+        <section id="resultCard" class="result-card" hidden>
+          <p class="eyebrow">本輪完成</p>
+          <h2 id="resultTitle"></h2>
+          <p id="resultDetail"></p>
+          <button class="primary-button" id="retryButton" type="button">再練一輪</button>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
