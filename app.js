@@ -18,12 +18,15 @@ const els = {
   progressBar: document.querySelector("#progressBar"),
   resultTitle: document.querySelector("#resultTitle"),
   resultDetail: document.querySelector("#resultDetail"),
+  wrongReview: document.querySelector("#wrongReview"),
+  wrongList: document.querySelector("#wrongList"),
 };
 
 let questionBank = [];
 let quiz = [];
 let currentIndex = 0;
 let correctCount = 0;
+let wrongAnswers = [];
 let answered = false;
 
 function normalizeText(text) {
@@ -115,9 +118,12 @@ function startQuiz() {
   }));
   currentIndex = 0;
   correctCount = 0;
+  wrongAnswers = [];
   answered = false;
   els.resultCard.hidden = true;
   els.questionCard.hidden = false;
+  els.wrongReview.hidden = true;
+  els.wrongList.innerHTML = "";
   renderQuestion();
 }
 
@@ -169,6 +175,12 @@ function chooseAnswer(button, option) {
     els.feedback.classList.add("correct");
   } else {
     button.classList.add("wrong");
+    wrongAnswers.push({
+      id: question.id,
+      text: question.text,
+      selected: option.text,
+      correct: correctOption.text,
+    });
     els.feedback.textContent = `選到錯誤選項：${option.text}。正確選項為：${correctOption.text}`;
     els.feedback.classList.add("wrong");
   }
@@ -205,6 +217,52 @@ function showResult() {
   els.resultDetail.textContent = `本輪正確率 ${percentage}%`;
   els.progressText.textContent = `${quiz.length} / ${quiz.length}`;
   els.progressBar.style.width = "100%";
+  renderWrongReview();
+}
+
+function renderWrongReview() {
+  els.wrongList.innerHTML = "";
+
+  if (!wrongAnswers.length) {
+    els.wrongReview.hidden = false;
+    const perfect = document.createElement("p");
+    perfect.className = "perfect-message";
+    perfect.textContent = "本輪沒有錯題。";
+    els.wrongList.appendChild(perfect);
+    return;
+  }
+
+  els.wrongReview.hidden = false;
+  wrongAnswers.forEach((item, index) => {
+    const article = document.createElement("article");
+    article.className = "wrong-item";
+
+    const title = document.createElement("h4");
+    title.textContent = `${index + 1}. 原題號 ${item.id}`;
+
+    const question = document.createElement("p");
+    question.className = "wrong-question";
+    question.textContent = item.text;
+
+    const selected = document.createElement("p");
+    selected.innerHTML = `<strong>你選：</strong>${escapeHtml(item.selected)}`;
+
+    const correct = document.createElement("p");
+    correct.innerHTML = `<strong>正解：</strong>${escapeHtml(item.correct)}`;
+
+    article.append(title, question, selected, correct);
+    els.wrongList.appendChild(article);
+  });
+}
+
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  })[char]);
 }
 
 async function loadQuestionBank() {
